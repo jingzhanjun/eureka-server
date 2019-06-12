@@ -1,0 +1,21 @@
+build docker image:
+1.
+<properties>
+    <docker.image.prefix>eureka-server</docker.image.prefix>
+</properties>
+<finalName>eureka-server</finalName>
+<plugins>
+    <plugin>
+        <groupId>com.spotify</groupId>
+        <artifactId>dockerfile-maven-plugin</artifactId>
+        <version>1.4.9</version>
+        <configuration>
+            <repository>${docker.image.prefix}/${project.artifactId}</repository>
+            <buildArgs>
+                <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+            </buildArgs>
+        </configuration>
+    </plugin>
+</plugins>
+2.
+mvn install -Dmaven.test.skip=true  dockerfile:build

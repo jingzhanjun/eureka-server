@@ -1,0 +1,15 @@
+server:
+  port: 8761
+
+eureka:
+  instance:
+    #    hostname: localhost
+    ip-address: 192.168.100.5
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.ip-address}:${server.port}/eureka/
+
+#  server:
+#    enable-self-preservation: false
